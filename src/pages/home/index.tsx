@@ -1,24 +1,45 @@
+import {useEffect, useState} from "react"
 import Card from "../../components/card"
 import Header from "../../components/header"
 import "./styles.css"
+import axios from "axios";
 
-const products = [
-    { id: "12", name: "Echo Dot 1", img: "https://m.media-amazon.com/images/I/71xoR4A6q-L._AC_SX425_.jpg", price: 799, brand: "Amazon" },
-    { id: "13", name: "Echo Dot 2", img: "https://m.media-amazon.com/images/I/71xoR4A6q-L._AC_SX425_.jpg", price: 799, brand: "Amazon" },
-    { id: "14", name: "Echo Dot 3", img: "https://m.media-amazon.com/images/I/71xoR4A6q-L._AC_SX425_.jpg", price: 799, brand: "Amazon" },
-    { id: "15", name: "Echo Dot 4", img: "https://m.media-amazon.com/images/I/71xoR4A6q-L._AC_SX425_.jpg", price: 799, brand: "Amazon" },
-];
+interface Produto {
+    _id:string
+    nome: string
+    preco: string
+    descricao: string
+    url_imagem: string
+    fornecedor: string
+}
 
 export default function Home() {
-    return (
+    
+    const [produtos, setProdutos] = useState<Produto[]>([]);
+
+    async function getProducts() {
+        try {
+        const response = await axios.get("https://api-produtos-unyleya.vercel.app/produtos");
+
+        setProdutos(response.data)
+        } catch (error) {
+            alert("Erro ao buscar produtos => " + error);
+        }
+    }
+
+    useEffect(() => {
+        getProducts();
+    }, [])
+
+    return ( 
         <div>
             <Header />
             <div className="home-container">
                 <main>
                     <h2 className="title">Produtos em Estoque</h2>
                     <div className="cards-grid">
-                        {products.map(product => (
-                            <Card key={product.id} {...product} />
+                        {produtos.map(product => (
+                            <Card key={product._id} fornecedor={product.fornecedor} url_imagem={product.url_imagem} nome={product.nome} preco={product.preco} />
                         ))}
                     </div>
                     <button className="add-button">+</button>
