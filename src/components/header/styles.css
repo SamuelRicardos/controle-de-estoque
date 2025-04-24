@@ -1,13 +1,25 @@
-.container_header {
-    background: #f9ca24;
+.header-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 10px;
+    padding: 1rem 2rem;
+    background-color: #1e88e5;
+    color: white;
 }
 
-.container_header ul {
-    display: flex;
+.header-menu {
     list-style: none;
-    gap: 30px;
+    display: flex;
+    gap: 1rem;
+    margin: 0;
+    padding: 0;
+}
+
+.header-menu li {
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.header-menu li:hover {
+    color: #cfd8dc;
 }
