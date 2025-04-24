@@ -1,25 +1,20 @@
-
-
-.container_home .card{
-    border: 1px solid #eee;
-    border-radius: 10px;
-    max-width: 250px;
+.container_home .list_cards {
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.float_button {
+    background: #F9CA24;
+    border: 0;
+    width: 60px;
+    height: 60px;
+    display: flex;
     justify-content: center;
     align-items: center;
+    font-size: 30px;
+    border-radius: 30px;
 
-    padding: 20px;
+    position: absolute;
+    right: 30px;
     box-shadow: -4px 10px 15px -3px rgba(0, 0, 0, 0.1);
-}
-
-.container_home .card h3 {
-    font-size: 1rem;
-}
-
-.container_home .card img{
-    width: 150px;
-    height: 150px;
-    object-fit: contain;
-    margin: 30px;
 }
