@@ -1,0 +1,25 @@
+
+
+.container_home .card{
+    border: 1px solid #eee;
+    border-radius: 10px;
+    max-width: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+    box-shadow: -4px 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.container_home .card h3 {
+    font-size: 1rem;
+}
+
+.container_home .card img{
+    width: 150px;
+    height: 150px;
+    object-fit: contain;
+    margin: 30px;
+}
