@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import Modal from "react-modal"
 import { Produto } from "../home";
 
@@ -9,9 +9,11 @@ Modal.setAppElement('#root');
 export default function Details() {
 
     const params = useParams();
+    const navigate = useNavigate();
 
     const [product, setProduct] = useState<Produto>({} as Produto);
     const [isOpenModal, setIsOpenModal] = useState(false);
+    const [isDeleteOpenModal, setIsDeleteOpenModal] = useState(false)
     const [nome, setNome] = useState("");
     const [preco, setPreco] = useState("");
     const [fornecedor, setFornecedor] = useState("");
@@ -44,6 +46,16 @@ export default function Details() {
         }
     }
 
+    async function removeProduct() {
+        try {
+            await axios.delete(`https://api-produtos-unyleya.vercel.app/produtos/${params.id}`)
+            setIsDeleteOpenModal(false)
+            navigate("/")
+        } catch(error) {
+            alert("Erro ao remover produto: " + error)
+        }
+    }
+
     useEffect(() => {
         getDetailsProduct()
     }, [])
@@ -51,7 +63,7 @@ export default function Details() {
     return (
         <div>
             <h1>{product.nome} 
-                <button>Apagar</button>
+                <button onClick={() => setIsDeleteOpenModal(true)}>Apagar</button>
                 <button onClick={() => {setIsOpenModal(true); setNome(product.nome); setDescricao(product.descricao); setFornecedor(product.fornecedor); setImagem(product.url_imagem); setPreco(product.preco) }}>Editar</button></h1>
             <img style={{ width: 300 }} src={product.url_imagem} />
             <p>{product.fornecedor}</p>
@@ -81,6 +93,13 @@ export default function Details() {
                         <button type="submit" className="btn-confirm">Alterar</button>
                     </div>
                 </form>
+            </Modal>
+
+            <Modal className="modal-content" isOpen={isDeleteOpenModal} onRequestClose={() => setIsDeleteOpenModal(false)}>
+                <h3>Confirmar exclusão</h3>
+                <p>Deseja realmente excluir o item?</p>
+                <button onClick={removeProduct}>Sim</button>
+                <button onClick={() => setIsDeleteOpenModal(false)}>Não</button>
             </Modal>
         </div>
     );
