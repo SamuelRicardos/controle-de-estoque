@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom"
 import Modal from "react-modal"
 import { Produto } from "../home";
+import "./styles.css"
 
 Modal.setAppElement('#root');
 
@@ -51,7 +52,7 @@ export default function Details() {
             await axios.delete(`https://api-produtos-unyleya.vercel.app/produtos/${params.id}`)
             setIsDeleteOpenModal(false)
             navigate("/")
-        } catch(error) {
+        } catch (error) {
             alert("Erro ao remover produto: " + error)
         }
     }
@@ -61,14 +62,18 @@ export default function Details() {
     }, [])
 
     return (
-        <div>
-            <h1>{product.nome} 
+        <div className="container_produto">
+            <h1>{product.nome}
                 <button onClick={() => setIsDeleteOpenModal(true)}>Apagar</button>
-                <button onClick={() => {setIsOpenModal(true); setNome(product.nome); setDescricao(product.descricao); setFornecedor(product.fornecedor); setImagem(product.url_imagem); setPreco(product.preco) }}>Editar</button></h1>
-            <img style={{ width: 300 }} src={product.url_imagem} />
-            <p>{product.fornecedor}</p>
-            <p>{product.preco}</p>
-            <p>{product.descricao}</p>
+                <button onClick={() => { setIsOpenModal(true); setNome(product.nome); setDescricao(product.descricao); setFornecedor(product.fornecedor); setImagem(product.url_imagem); setPreco(product.preco) }}>Editar</button></h1>
+            <div className="produto-detalhes">
+                <img className="produto-imagem" src={product.url_imagem} alt={product.nome} />
+                <div className="produto-info">
+                    <p><strong>Fornecedor:</strong> {product.fornecedor}</p>
+                    <p><strong>Valor:</strong> R$ {product.preco}</p>
+                    <p><strong>Descrição:</strong> {product.descricao}</p>
+                </div>
+            </div>
 
             <Modal
                 isOpen={isOpenModal}
