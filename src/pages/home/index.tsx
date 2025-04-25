@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react"
+import Skeleton from "react-loading-skeleton";
+import 'react-loading-skeleton/dist/skeleton.css';
 import Card from "../../components/card"
 import Header from "../../components/header"
 import Modal from "react-modal"
@@ -26,14 +28,18 @@ export default function Home() {
     const [fornecedor, setFornecedor] = useState("");
     const [descricao, setDescricao] = useState("")
     const [imagem, setImagem] = useState("")
+    const [isLoading, setIsLoading] = useState(true);
+
 
     async function getProducts() {
+        setIsLoading(true);
         try {
             const response = await axios.get("https://api-produtos-unyleya.vercel.app/produtos");
-
-            setProdutos(response.data)
+            setProdutos(response.data);
         } catch (error) {
             alert("Erro ao buscar produtos => " + error);
+        } finally {
+            setIsLoading(false);
         }
     }
 
@@ -83,9 +89,26 @@ export default function Home() {
                 <main>
                     <h2 className="title">Produtos em Estoque</h2>
                     <div className="cards-grid">
-                        {produtos.map(product => (
-                            <Card key={product._id} id={product._id} fornecedor={product.fornecedor} url_imagem={product.url_imagem} nome={product.nome} preco={product.preco} />
-                        ))}
+                        {isLoading ? (
+                            Array(7).fill(0).map((_, i) => (
+                                <div key={i} className="card">
+                                    <Skeleton height={200} />
+                                    <h3><Skeleton width={200} /></h3>
+                                    <p><Skeleton width={200} /></p>
+                                </div>
+                            ))
+                        ) : (
+                            produtos.map(product => (
+                                <Card
+                                    key={product._id}
+                                    id={product._id}
+                                    fornecedor={product.fornecedor}
+                                    url_imagem={product.url_imagem}
+                                    nome={product.nome}
+                                    preco={product.preco}
+                                />
+                            ))
+                        )}
                     </div>
                     <button className="add-button" onClick={() => setIsOpenModal(true)}>+</button>
 
