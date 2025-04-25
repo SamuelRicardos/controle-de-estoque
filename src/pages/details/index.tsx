@@ -2,6 +2,8 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom"
 import { FaTrash, FaEdit } from 'react-icons/fa';
+import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
 import Modal from "react-modal"
 import { Produto } from "../home";
 import "./styles.css"
@@ -21,11 +23,18 @@ export default function Details() {
     const [fornecedor, setFornecedor] = useState("");
     const [descricao, setDescricao] = useState("")
     const [imagem, setImagem] = useState("")
+    const [isLoading, setIsLoading] = useState(true);
 
     async function getDetailsProduct() {
-        const response = await axios.get(`https://api-produtos-unyleya.vercel.app/produtos/${params.id}`)
-
-        setProduct(response.data)
+        setIsLoading(true);
+        try {
+            const response = await axios.get(`https://api-produtos-unyleya.vercel.app/produtos/${params.id}`);
+            setProduct(response.data);
+        } catch (error) {
+            alert("Erro ao buscar produto: " + error);
+        } finally {
+            setIsLoading(false);
+        }
     }
 
     async function editProduct(event: React.FormEvent<HTMLFormElement>) {
@@ -87,15 +96,27 @@ export default function Details() {
                         </div>
                     </div>
                 </div>
-                <div className="produto-detalhes">
-                    <img className="produto-imagem" src={product.url_imagem} alt={product.nome} />
-                    <div className="produto-info">
-                        <p><strong>Nome:</strong> {product.nome}</p>
-                        <p><strong>Fornecedor:</strong> {product.fornecedor}</p>
-                        <p><strong>Valor:</strong> R$ {product.preco}</p>
-                        <p><strong>Descrição:</strong> {product.descricao}</p>
+                {isLoading ? (
+                    <div className="produto-detalhes">
+                        <Skeleton height={300} width={300} />
+                        <div className="produto-info">
+                            <p><strong>Nome:</strong> <Skeleton width={180} /></p>
+                            <p><strong>Fornecedor:</strong> <Skeleton width={150} /></p>
+                            <p><strong>Valor:</strong> <Skeleton width={100} /></p>
+                            <p><strong>Descrição:</strong> <Skeleton count={3} /></p>
+                        </div>
                     </div>
-                </div>
+                ) : (
+                    <div className="produto-detalhes">
+                        <img className="produto-imagem" src={product.url_imagem} alt={product.nome} />
+                        <div className="produto-info">
+                            <p><strong>Nome:</strong> {product.nome}</p>
+                            <p><strong>Fornecedor:</strong> {product.fornecedor}</p>
+                            <p><strong>Valor:</strong> R$ {product.preco}</p>
+                            <p><strong>Descrição:</strong> {product.descricao}</p>
+                        </div>
+                    </div>
+                )}
 
                 <Modal
                     isOpen={isOpenModal}
