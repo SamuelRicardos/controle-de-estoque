@@ -1,7 +1,9 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom"
+import { Link } from "react-router-dom";
 import { FaTrash, FaEdit } from 'react-icons/fa';
+import { FaArrowRightToBracket  } from "react-icons/fa6";
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 import Modal from "react-modal"
@@ -75,6 +77,11 @@ export default function Details() {
         <div className="container_geral">
             <div className="container_produto">
                 <div className="header-produto">
+                            <div className="voltar-container">
+                                <Link to="/" className="btn-voltar">
+                                <FaArrowRightToBracket  />
+                                </Link>
+                            </div>
                     <div className="topo-botoes">
                         <div className="botoes-acao">
                             <button className="icon-button icon-button-delete" onClick={() => setIsDeleteOpenModal(true)}>
