@@ -5,6 +5,7 @@
     padding: 1rem;
     text-align: center;
     transition: transform 0.2s ease;
+    text-decoration: none;
 }
 
 .card-container:hover {

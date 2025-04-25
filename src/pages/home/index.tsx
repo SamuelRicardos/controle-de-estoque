@@ -5,7 +5,7 @@ import Modal from "react-modal"
 import "./styles.css"
 import axios from "axios";
 
-interface Produto {
+export interface Produto {
     _id: string
     nome: string
     preco: string
@@ -84,7 +84,7 @@ export default function Home() {
                     <h2 className="title">Produtos em Estoque</h2>
                     <div className="cards-grid">
                         {produtos.map(product => (
-                            <Card key={product._id} fornecedor={product.fornecedor} url_imagem={product.url_imagem} nome={product.nome} preco={product.preco} />
+                            <Card key={product._id} id={product._id} fornecedor={product.fornecedor} url_imagem={product.url_imagem} nome={product.nome} preco={product.preco} />
                         ))}
                     </div>
                     <button className="add-button" onClick={() => setIsOpenModal(true)}>+</button>
