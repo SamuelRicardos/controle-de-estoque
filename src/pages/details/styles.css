@@ -171,7 +171,7 @@
 
   .header-produto {
     display: flex;
-    justify-content: space-between;
+    justify-content: end;
     align-items: center;
     margin-bottom: 1rem;
   }
@@ -210,10 +210,6 @@
 @media (max-width: 768px) {
   .container_produto {
     padding: 1rem;
-  }
-
-  .produto-nome {
-    
   }
 
   .produto-detalhes {

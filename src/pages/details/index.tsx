@@ -86,11 +86,11 @@ export default function Details() {
                             </button>
                         </div>
                     </div>
-                    <h1 className="produto-nome">{product.nome}</h1>
                 </div>
                 <div className="produto-detalhes">
                     <img className="produto-imagem" src={product.url_imagem} alt={product.nome} />
                     <div className="produto-info">
+                        <p><strong>Nome:</strong> {product.nome}</p>
                         <p><strong>Fornecedor:</strong> {product.fornecedor}</p>
                         <p><strong>Valor:</strong> R$ {product.preco}</p>
                         <p><strong>Descrição:</strong> {product.descricao}</p>
