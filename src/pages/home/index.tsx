@@ -37,6 +37,41 @@ export default function Home() {
         }
     }
 
+    async function saveProduct(event: React.FormEvent<HTMLFormElement>) {
+        event.preventDefault();
+        if (!fornecedor) {
+            alert("Por favor, selecione um fornecedor.");
+            return;
+        }
+
+        try {
+            await axios.post("https://api-produtos-unyleya.vercel.app/produtos",
+                {
+                    "nome": nome,
+                    "preco": preco,
+                    "fornecedor": fornecedor,
+                    "url_imagem": imagem,
+                    "descricao": descricao
+                }
+            );
+            getProducts();
+            setIsOpenModal(false)
+            limparEstados()
+            alert("Produto cadastrado com sucesso")
+        } catch (error) {
+            alert("Houve um erro ao cadastrar o produto" + error);
+        }
+
+    }
+
+    function limparEstados() {
+        setNome("")
+        setDescricao("")
+        setFornecedor("")
+        setImagem("")
+        setPreco("")
+    }
+
     useEffect(() => {
         getProducts();
     }, [])
@@ -61,15 +96,16 @@ export default function Home() {
                         overlayClassName="modal-overlay"
                     >
                         <h1>Cadastrar produto</h1>
-                        <form className="modal-form">
-                            <input placeholder="Nome do produto" value={nome} onChange={(event) => setNome(event.target.value)} />
-                            <input placeholder="Preço" value={preco} onChange={(event) => setPreco(event.target.value)} />
+                        <form className="modal-form" onSubmit={saveProduct}>
+                            <input type="text" placeholder="Nome do produto" value={nome} onChange={(event) => setNome(event.target.value)} />
+                            <input type="text" placeholder="Preço" value={preco} onChange={(event) => setPreco(event.target.value)} />
                             <select value={fornecedor} onChange={(event) => setFornecedor(event.target.value)}>
-                                <option value="Fornecedor 1">Fornecedor 1</option>
+                                <option value="" disabled hidden>Selecione o fornecedor</option>
+                                <option value="Amazon">Amazon</option>
                                 <option value="Fornecedor 2">Fornecedor 2</option>
                             </select>
-                            <input placeholder="URL da imagem" value={imagem} onChange={(event) => setImagem(event.target.value)} />
-                            <input placeholder="Descrição" value={descricao} onChange={(event) => setDescricao(event.target.value)} />
+                            <input type="text" placeholder="URL da imagem" value={imagem} onChange={(event) => setImagem(event.target.value)} />
+                            <input type="text" placeholder="Descrição" value={descricao} onChange={(event) => setDescricao(event.target.value)} />
 
                             <div className="modal-buttons">
                                 <button type="button" onClick={() => setIsOpenModal(false)} className="btn-cancel">Cancelar</button>
