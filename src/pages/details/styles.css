@@ -15,7 +15,7 @@
     font-family: 'Segoe UI', sans-serif;
   }
   
-  h1 {
+  .produto-nome {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -207,50 +207,49 @@
     color: white;
   }
 
-  @media (max-width: 768px) {
-    .container_produto {
-      padding: 1rem;
-      margin: 1rem;
-    }
-  
-    .produto-detalhes {
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-    }
-  
-    .produto-imagem {
-      width: 100%;
-      max-width: 250px;
-      height: auto;
-    }
-  
-    .produto-info {
-      width: 100%;
-    }
-  
-    .header-produto {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 1rem;
-    }
-  
-    .botoes-acao {
-      width: 100%;
-      justify-content: center;
-    }
-  
-    .modal-content {
-      padding: 1.5rem;
-      width: 90%;
-    }
-  
-    .modal-buttons {
-      flex-direction: column;
-      align-items: stretch;
-    }
-  
-    .btn-cancel, .btn-confirm {
-      width: 100%;
-    }
+@media (max-width: 768px) {
+  .container_produto {
+    padding: 1rem;
   }
+
+  .produto-nome {
+    
+  }
+
+  .produto-detalhes {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .produto-imagem {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+  }
+
+  .produto-info {
+    width: 100%;
+    text-align: start;
+  }
+
+  .header-produto {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .botoes-acao {
+    justify-content: end;
+    flex-wrap: wrap;
+  }
+
+  .icon-button {
+    width: 44px;
+    height: 44px;
+  }
+
+  .topo-botoes {
+    width: 100%;
+  }
+}

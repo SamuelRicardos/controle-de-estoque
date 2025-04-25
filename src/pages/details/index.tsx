@@ -66,25 +66,27 @@ export default function Details() {
         <div className="container_geral">
             <div className="container_produto">
                 <div className="header-produto">
-                    <h1>{product.nome}</h1>
-                    <div className="botoes-acao">
-                        <button className="icon-button icon-button-delete" onClick={() => setIsDeleteOpenModal(true)}>
-                            <FaTrash size={18} />
-                        </button>
-                        <button
-                            className="icon-button icon-button-edit"
-                            onClick={() => {
-                                setIsOpenModal(true);
-                                setNome(product.nome);
-                                setDescricao(product.descricao);
-                                setFornecedor(product.fornecedor);
-                                setImagem(product.url_imagem);
-                                setPreco(product.preco);
-                            }}
-                        >
-                            <FaEdit size={18} />
-                        </button>
+                    <div className="topo-botoes">
+                        <div className="botoes-acao">
+                            <button className="icon-button icon-button-delete" onClick={() => setIsDeleteOpenModal(true)}>
+                                <FaTrash size={18} />
+                            </button>
+                            <button
+                                className="icon-button icon-button-edit"
+                                onClick={() => {
+                                    setIsOpenModal(true);
+                                    setNome(product.nome);
+                                    setDescricao(product.descricao);
+                                    setFornecedor(product.fornecedor);
+                                    setImagem(product.url_imagem);
+                                    setPreco(product.preco);
+                                }}
+                            >
+                                <FaEdit size={18} />
+                            </button>
+                        </div>
                     </div>
+                    <h1 className="produto-nome">{product.nome}</h1>
                 </div>
                 <div className="produto-detalhes">
                     <img className="produto-imagem" src={product.url_imagem} alt={product.nome} />
