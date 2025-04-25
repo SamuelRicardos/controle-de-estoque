@@ -23,3 +23,7 @@
 .header-menu li:hover {
     color: #cfd8dc;
 }
+
+.header-title{
+    color: white;
+}

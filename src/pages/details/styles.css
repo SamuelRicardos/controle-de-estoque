@@ -1,10 +1,3 @@
-body {
-    margin: 0;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
 
 /* Container principal */
 .container_produto {
@@ -175,4 +168,46 @@ body {
     font-size: 1.1rem;
     margin-bottom: 1rem;
     color: #444;
+  }
+
+  .header-produto {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+  
+  /* Container dos botões */
+  .botoes-acao {
+    display: flex;
+    gap: 10px;
+  }
+  
+  /* Estilo base dos botões com ícones */
+  .icon-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .icon-button:hover {
+    transform: scale(1.1);
+  }
+  
+  /* Botão apagar */
+  .icon-button-delete {
+    background-color: #f87171;
+    color: white;
+  }
+  
+  /* Botão editar */
+  .icon-button-edit {
+    background-color: #2AD161;
+    color: white;
   }

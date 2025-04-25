@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom"
+import { FaTrash, FaEdit } from 'react-icons/fa';
 import Modal from "react-modal"
 import { Produto } from "../home";
 import "./styles.css"
@@ -63,9 +64,27 @@ export default function Details() {
 
     return (
         <div className="container_produto">
-            <h1>{product.nome}
-                <button onClick={() => setIsDeleteOpenModal(true)}>Apagar</button>
-                <button onClick={() => { setIsOpenModal(true); setNome(product.nome); setDescricao(product.descricao); setFornecedor(product.fornecedor); setImagem(product.url_imagem); setPreco(product.preco) }}>Editar</button></h1>
+            <div className="header-produto">
+                <h1>{product.nome}</h1>
+                <div className="botoes-acao">
+                    <button className="icon-button icon-button-delete" onClick={() => setIsDeleteOpenModal(true)}>
+                        <FaTrash size={18} />
+                    </button>
+                    <button
+                        className="icon-button icon-button-edit"
+                        onClick={() => {
+                            setIsOpenModal(true);
+                            setNome(product.nome);
+                            setDescricao(product.descricao);
+                            setFornecedor(product.fornecedor);
+                            setImagem(product.url_imagem);
+                            setPreco(product.preco);
+                        }}
+                    >
+                        <FaEdit size={18} />
+                    </button>
+                </div>
+            </div>
             <div className="produto-detalhes">
                 <img className="produto-imagem" src={product.url_imagem} alt={product.nome} />
                 <div className="produto-info">
