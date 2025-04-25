@@ -5,7 +5,6 @@
  align-items: center;
 }
 
-/* Container principal */
 .container_produto {
     max-width: 800px;
     margin: 2rem auto;
@@ -16,7 +15,6 @@
     font-family: 'Segoe UI', sans-serif;
   }
   
-  /* Título + botões */
   h1 {
     display: flex;
     justify-content: space-between;
@@ -25,7 +23,6 @@
     color: #333;
   }
   
-  /* Botões padrão */
   h1 button {
     margin-left: 10px;
     background-color: #007bff;
@@ -41,7 +38,6 @@
     background-color: #0056b3;
   }
   
-  /* Imagem do produto */
   img {
     width: 100%;
     max-width: 400px;
@@ -49,14 +45,12 @@
     border-radius: 8px;
   }
   
-  /* Informações do produto */
   p {
     font-size: 1.1rem;
     margin: 8px 0;
     color: #555;
   }
   
-  /* Modal padrão */
   .modal-overlay {
     background-color: rgba(0, 0, 0, 0.6);
     position: fixed;
@@ -151,7 +145,6 @@
     }
 }
   
-  /* Layout horizontal da imagem e info */
 .produto-detalhes {
     display: flex;
     align-items: flex-start;
@@ -159,7 +152,6 @@
     margin-top: 2rem;
   }
   
-  /* Imagem no lado esquerdo */
   .produto-imagem {
     width: 300px;
     height: auto;
@@ -167,7 +159,6 @@
     object-fit: cover;
   }
   
-  /* Informações no lado direito */
   .produto-info {
     flex: 1;
   }
@@ -185,13 +176,11 @@
     margin-bottom: 1rem;
   }
   
-  /* Container dos botões */
   .botoes-acao {
     display: flex;
     gap: 10px;
   }
   
-  /* Estilo base dos botões com ícones */
   .icon-button {
     display: flex;
     align-items: center;
@@ -208,14 +197,60 @@
     transform: scale(1.1);
   }
   
-  /* Botão apagar */
   .icon-button-delete {
     background-color: #f87171;
     color: white;
   }
   
-  /* Botão editar */
   .icon-button-edit {
     background-color: #2AD161;
     color: white;
+  }
+
+  @media (max-width: 768px) {
+    .container_produto {
+      padding: 1rem;
+      margin: 1rem;
+    }
+  
+    .produto-detalhes {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+  
+    .produto-imagem {
+      width: 100%;
+      max-width: 250px;
+      height: auto;
+    }
+  
+    .produto-info {
+      width: 100%;
+    }
+  
+    .header-produto {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+  
+    .botoes-acao {
+      width: 100%;
+      justify-content: center;
+    }
+  
+    .modal-content {
+      padding: 1.5rem;
+      width: 90%;
+    }
+  
+    .modal-buttons {
+      flex-direction: column;
+      align-items: stretch;
+    }
+  
+    .btn-cancel, .btn-confirm {
+      width: 100%;
+    }
   }

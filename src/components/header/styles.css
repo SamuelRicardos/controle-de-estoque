@@ -3,7 +3,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 1rem 2rem;
-    background-color: #1e88e5; /* verde suave */
+    background-color: #1e88e5;
     color: white;
     position: relative;
   }
@@ -22,7 +22,6 @@
     cursor: pointer;
   }
   
-  /* Navegação padrão */
   .header-nav {
     display: flex;
   }
@@ -38,7 +37,7 @@
     font-weight: 500;
   }
   
-  /* Responsivo - Mobile */
+
   @media (max-width: 768px) {
     .menu-icon {
       display: block;
