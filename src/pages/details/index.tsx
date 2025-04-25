@@ -63,68 +63,72 @@ export default function Details() {
     }, [])
 
     return (
-        <div className="container_produto">
-            <div className="header-produto">
-                <h1>{product.nome}</h1>
-                <div className="botoes-acao">
-                    <button className="icon-button icon-button-delete" onClick={() => setIsDeleteOpenModal(true)}>
-                        <FaTrash size={18} />
-                    </button>
-                    <button
-                        className="icon-button icon-button-edit"
-                        onClick={() => {
-                            setIsOpenModal(true);
-                            setNome(product.nome);
-                            setDescricao(product.descricao);
-                            setFornecedor(product.fornecedor);
-                            setImagem(product.url_imagem);
-                            setPreco(product.preco);
-                        }}
-                    >
-                        <FaEdit size={18} />
-                    </button>
-                </div>
-            </div>
-            <div className="produto-detalhes">
-                <img className="produto-imagem" src={product.url_imagem} alt={product.nome} />
-                <div className="produto-info">
-                    <p><strong>Fornecedor:</strong> {product.fornecedor}</p>
-                    <p><strong>Valor:</strong> R$ {product.preco}</p>
-                    <p><strong>Descrição:</strong> {product.descricao}</p>
-                </div>
-            </div>
-
-            <Modal
-                isOpen={isOpenModal}
-                onRequestClose={() => setIsOpenModal(false)}
-                className="modal-content"
-                overlayClassName="modal-overlay"
-            >
-                <h1>Editar produto</h1>
-                <form className="modal-form" onSubmit={editProduct}>
-                    <input type="text" placeholder="Nome do produto" value={nome} onChange={(event) => setNome(event.target.value)} />
-                    <input type="text" placeholder="Preço" value={preco} onChange={(event) => setPreco(event.target.value)} />
-                    <select value={fornecedor} onChange={(event) => setFornecedor(event.target.value)}>
-                        <option value="" disabled hidden>Selecione o fornecedor</option>
-                        <option value="Amazon">Amazon</option>
-                        <option value="Fornecedor 2">Fornecedor 2</option>
-                    </select>
-                    <input type="text" placeholder="URL da imagem" value={imagem} onChange={(event) => setImagem(event.target.value)} />
-                    <input type="text" placeholder="Descrição" value={descricao} onChange={(event) => setDescricao(event.target.value)} />
-
-                    <div className="modal-buttons">
-                        <button type="button" onClick={() => setIsOpenModal(false)} className="btn-cancel">Cancelar</button>
-                        <button type="submit" className="btn-confirm">Alterar</button>
+        <div className="container_geral">
+            <div className="container_produto">
+                <div className="header-produto">
+                    <h1>{product.nome}</h1>
+                    <div className="botoes-acao">
+                        <button className="icon-button icon-button-delete" onClick={() => setIsDeleteOpenModal(true)}>
+                            <FaTrash size={18} />
+                        </button>
+                        <button
+                            className="icon-button icon-button-edit"
+                            onClick={() => {
+                                setIsOpenModal(true);
+                                setNome(product.nome);
+                                setDescricao(product.descricao);
+                                setFornecedor(product.fornecedor);
+                                setImagem(product.url_imagem);
+                                setPreco(product.preco);
+                            }}
+                        >
+                            <FaEdit size={18} />
+                        </button>
                     </div>
-                </form>
-            </Modal>
+                </div>
+                <div className="produto-detalhes">
+                    <img className="produto-imagem" src={product.url_imagem} alt={product.nome} />
+                    <div className="produto-info">
+                        <p><strong>Fornecedor:</strong> {product.fornecedor}</p>
+                        <p><strong>Valor:</strong> R$ {product.preco}</p>
+                        <p><strong>Descrição:</strong> {product.descricao}</p>
+                    </div>
+                </div>
 
-            <Modal className="modal-content" isOpen={isDeleteOpenModal} onRequestClose={() => setIsDeleteOpenModal(false)}>
-                <h3>Confirmar exclusão</h3>
-                <p>Deseja realmente excluir o item?</p>
-                <button onClick={removeProduct}>Sim</button>
-                <button onClick={() => setIsDeleteOpenModal(false)}>Não</button>
-            </Modal>
+                <Modal
+                    isOpen={isOpenModal}
+                    onRequestClose={() => setIsOpenModal(false)}
+                    className="modal-content"
+                    overlayClassName="modal-overlay"
+                >
+                    <h1>Editar produto</h1>
+                    <form className="modal-form" onSubmit={editProduct}>
+                        <input type="text" placeholder="Nome do produto" value={nome} onChange={(event) => setNome(event.target.value)} />
+                        <input type="text" placeholder="Preço" value={preco} onChange={(event) => setPreco(event.target.value)} />
+                        <select value={fornecedor} onChange={(event) => setFornecedor(event.target.value)}>
+                            <option value="" disabled hidden>Selecione o fornecedor</option>
+                            <option value="Amazon">Amazon</option>
+                            <option value="Fornecedor 2">Fornecedor 2</option>
+                        </select>
+                        <input type="text" placeholder="URL da imagem" value={imagem} onChange={(event) => setImagem(event.target.value)} />
+                        <input type="text" placeholder="Descrição" value={descricao} onChange={(event) => setDescricao(event.target.value)} />
+
+                        <div className="modal-buttons">
+                            <button type="button" onClick={() => setIsOpenModal(false)} className="btn-cancel">Cancelar</button>
+                            <button type="submit" className="btn-confirm">Alterar</button>
+                        </div>
+                    </form>
+                </Modal>
+
+                <Modal className="modal-content" overlayClassName="modal-overlay" isOpen={isDeleteOpenModal} onRequestClose={() => setIsDeleteOpenModal(false)}>
+                    <h3>Confirmar exclusão</h3>
+                    <p>Deseja realmente excluir o item?</p>
+                    <div className="modal-buttons">
+                        <button className="btn-cancel" onClick={() => setIsDeleteOpenModal(false)}>Não</button>
+                        <button className="btn-confirm" onClick={removeProduct}>Sim</button>
+                    </div>
+                </Modal>
+            </div>
         </div>
     );
 }

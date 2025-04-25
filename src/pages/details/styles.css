@@ -1,3 +1,9 @@
+.container_geral {
+ height: 100vh;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+}
 
 /* Container principal */
 .container_produto {
@@ -58,90 +64,92 @@
     left: 0;
     right: 0;
     bottom: 0;
-  }
-  
-  /* Conteúdo do modal */
-  .modal-content {
-    background-color: white;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    z-index: 999;
+}
+
+.modal-content {
+    background-color: #fff;
     padding: 2rem;
+    border-radius: 16px;
+    width: 100%;
     max-width: 500px;
-    margin: 10vh auto;
-    border-radius: 10px;
-    position: relative;
-  }
-  
-  /* Formulário do modal */
-  .modal-form {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    animation: fadeIn 0.3s ease;
+}
+
+.modal-form {
     display: flex;
     flex-direction: column;
-  }
-  
-  .modal-form input,
-  .modal-form select {
-    padding: 10px;
-    margin-bottom: 1rem;
-    font-size: 1rem;
+    gap: 1rem;
+    margin-top: 20px;
+}
+
+.modal-form input,
+.modal-form select {
+    padding: 0.75rem 1rem;
     border: 1px solid #ccc;
-    border-radius: 6px;
-  }
-  
-  .modal-buttons {
+    border-radius: 8px;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.2s ease;
+}
+
+.modal-form input:focus,
+.modal-form select:focus {
+    border-color: #1e88e5;
+}
+
+.modal-buttons {
     display: flex;
-    justify-content: flex-end;
-    gap: 10px;
-  }
-  
-  /* Botões do modal */
-  .btn-cancel {
-    background-color: #ccc;
-    color: black;
-  }
-  
-  .btn-confirm {
-    background-color: #28a745;
+    justify-content: end;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.btn-confirm {
+    background-color: #1e88e5;
     color: white;
-  }
-  
-  .btn-cancel,
-  .btn-confirm {
     border: none;
-    padding: 10px 16px;
-    border-radius: 6px;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
     cursor: pointer;
     font-weight: bold;
-  }
-  
-  .btn-cancel:hover {
-    background-color: #bbb;
-  }
-  
-  .btn-confirm:hover {
-    background-color: #218838;
-  }
-  
-  /* Modal de exclusão */
-  .modal-content h3 {
-    margin-bottom: 0.5rem;
-  }
-  
-  .modal-content button {
-    margin-right: 1rem;
-    padding: 8px 16px;
-    border-radius: 6px;
-    border: none;
+    transition: background-color 0.2s ease;
+}
+
+.btn-confirm:hover {
+    background-color: #1565c0;
+}
+
+.btn-cancel {
+    background-color: transparent;
+    color: #333;
+    border: 1px solid #ccc;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
     cursor: pointer;
-    font-weight: bold;
-  }
-  
-  .modal-content button:first-of-type {
-    background-color: #dc3545;
-    color: white;
-  }
-  
-  .modal-content button:last-of-type {
-    background-color: #6c757d;
-    color: white;
-  }
+    transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.btn-cancel:hover {
+    border-color: #1e88e5;
+    color: #1e88e5;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
   
   /* Layout horizontal da imagem e info */
 .produto-detalhes {
