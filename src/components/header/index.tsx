@@ -7,7 +7,7 @@ export default function Header() {
 
   return (
     <header className="header-container">
-      <h1 className="header-title">UnyProducts</h1>
+      <h1 className="header-title">SimpleStoqs</h1>
 
       <button
         className="menu-icon"
