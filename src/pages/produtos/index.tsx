@@ -19,7 +19,7 @@ export interface Produto {
 
 Modal.setAppElement('#root');
 
-export default function Home() {
+export default function Produtos() {
   const [produtos, setProdutos] = useState<Produto[]>([]);
   const [isOpenModal, setIsOpenModal] = useState(false);
 

@@ -1,13 +1,13 @@
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
-import Home from "./pages/home";
 import Details from "./pages/details";
+import Produtos from "./pages/produtos";
 
 export default function App() {
 
   const router = createBrowserRouter([
     {
-      path: "/",
-      element: <Home/>,
+      path: "/produtos",
+      element: <Produtos/>,
     },
     {
       path: "/details/:id",

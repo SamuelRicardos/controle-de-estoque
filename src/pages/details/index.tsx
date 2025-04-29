@@ -7,7 +7,7 @@ import { FaArrowRightToBracket  } from "react-icons/fa6";
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 import Modal from "react-modal"
-import { Produto } from "../home";
+import { Produto } from "../produtos";
 import "./styles.css"
 
 Modal.setAppElement('#root');
@@ -78,7 +78,7 @@ export default function Details() {
             <div className="container_produto">
                 <div className="header-produto">
                             <div className="voltar-container">
-                                <Link to="/" className="btn-voltar">
+                                <Link to="/produtos" className="btn-voltar">
                                 <FaArrowRightToBracket  />
                                 </Link>
                             </div>
