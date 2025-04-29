@@ -6,7 +6,7 @@ export default function App() {
 
   const router = createBrowserRouter([
     {
-      path: "/produtos",
+      path: "/",
       element: <Produtos/>,
     },
     {

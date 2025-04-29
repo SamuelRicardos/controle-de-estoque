@@ -78,7 +78,7 @@ export default function Details() {
             <div className="container_produto">
                 <div className="header-produto">
                             <div className="voltar-container">
-                                <Link to="/produtos" className="btn-voltar">
+                                <Link to="/" className="btn-voltar">
                                 <FaArrowRightToBracket  />
                                 </Link>
                             </div>
