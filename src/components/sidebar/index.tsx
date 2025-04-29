@@ -1,26 +1,23 @@
-import { FaBoxOpen, FaUsers, FaChartBar, FaSignOutAlt } from "react-icons/fa";
 import "./style.css";
 
-export default function Sidebar() {
+interface SidebarProps {
+  isOpen: boolean;
+}
+
+export default function Sidebar({ isOpen }: SidebarProps) {
   return (
-    <aside className="sidebar">
+    <aside className={`sidebar ${isOpen ? 'show' : ''}`}>
+      <div className="sidebar-title">Menu</div>
       <nav className="sidebar-nav">
         <ul>
           <li>
-            <FaBoxOpen className="sidebar-icon" />
-            <span>Produtos</span>
+            <span className="sidebar-icon">🏠</span> Início
           </li>
           <li>
-            <FaUsers className="sidebar-icon" />
-            <span>Clientes</span>
+            <span className="sidebar-icon">📦</span> Produtos
           </li>
           <li>
-            <FaChartBar className="sidebar-icon" />
-            <span>Relatórios</span>
-          </li>
-          <li>
-            <FaSignOutAlt className="sidebar-icon" />
-            <span>Sair</span>
+            <span className="sidebar-icon">⚙️</span> Configurações
           </li>
         </ul>
       </nav>

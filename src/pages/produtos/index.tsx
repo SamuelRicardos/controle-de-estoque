@@ -4,7 +4,7 @@ import 'react-loading-skeleton/dist/skeleton.css';
 import Card from "../../components/card";
 import Header from "../../components/header";
 import Modal from "react-modal";
-import "./styles.css";
+import "./style.css";
 import axios from "axios";
 import Sidebar from "../../components/sidebar";
 
@@ -22,6 +22,7 @@ Modal.setAppElement('#root');
 export default function Produtos() {
   const [produtos, setProdutos] = useState<Produto[]>([]);
   const [isOpenModal, setIsOpenModal] = useState(false);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const [nome, setNome] = useState("");
   const [preco, setPreco] = useState("");
@@ -80,9 +81,9 @@ export default function Produtos() {
 
   return (
     <div className="layout">
-      <Header />
+      <Header onToggleSidebar={() => setIsSidebarOpen(!isSidebarOpen)} />
       <div className="main-content">
-        <Sidebar />
+        <Sidebar isOpen={isSidebarOpen} />
         <div className="home-container">
           <main>
             <h2 className="title">Produtos em Estoque</h2>
