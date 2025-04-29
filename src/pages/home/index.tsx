@@ -6,6 +6,7 @@ import Header from "../../components/header"
 import Modal from "react-modal"
 import "./styles.css"
 import axios from "axios";
+import Sidebar from "../../components/sidebar";
 
 export interface Produto {
     _id: string
@@ -85,6 +86,7 @@ export default function Home() {
     return (
         <div>
             <Header />
+            <Sidebar />
             <div className="home-container">
                 <main>
                     <h2 className="title">Produtos em Estoque</h2>

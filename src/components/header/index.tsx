@@ -17,13 +17,6 @@ export default function Header() {
         <FaBars size={22} />
       </button>
 
-      <nav className={`header-nav ${menuOpen ? "show" : ""}`}>
-        <ul className="header-menu">
-          <li>Produtos</li>
-          <li>Quem somos</li>
-          <li>Sair</li>
-        </ul>
-      </nav>
     </header>
   );
 }
